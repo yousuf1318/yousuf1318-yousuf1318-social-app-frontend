@@ -16,7 +16,7 @@ import {
 // Get current users profile
 export const getCurrentProfile = () => async dispatch => {
     try {
-        const res = await axios.get('/api/profile/me')
+        const res = await axios.get('https://social-app-b.herokuapp.com/api/profile/me')
 
         dispatch({
             type: GET_PROFILE,
@@ -36,7 +36,7 @@ export const getCurrentProfile = () => async dispatch => {
 export const getProfiles = () => async dispatch => {
     dispatch({ type: CLEAR_PROFILE })
     try {
-        const res = await axios.get('/api/profile/')
+        const res = await axios.get('https://social-app-b.herokuapp.com/api/profile/')
 
         dispatch({
             type: GET_PROFILES,
@@ -54,7 +54,7 @@ export const getProfiles = () => async dispatch => {
 // Get Profile by ID
 export const getProfileById = userId => async dispatch => {
     try {
-        const res = await axios.get(`/api/profile/user/${userId}`)
+        const res = await axios.get(`https://social-app-b.herokuapp.com/api/profile/user/${userId}`)
             // console.log(res.data[0].user)
         dispatch({
             type: GET_PROFILE,
@@ -74,7 +74,7 @@ export const getProfileById = userId => async dispatch => {
 // Get Github repos
 export const getGithubRepos = username => async dispatch => {
     try {
-        const res = await axios.get(`/api/profile/github/${username}`)
+        const res = await axios.get(`https://social-app-b.herokuapp.com/api/profile/github/${username}`)
         console.log(res.data)
         dispatch({
             type: GET_REPOS,
@@ -98,7 +98,7 @@ export const createProfile = (FormData, history, edit = false) => async dispatch
             }
         }
 
-        const res = await axios.post('/api/profile', FormData, config)
+        const res = await axios.post('https://social-app-b.herokuapp.com/api/profile', FormData, config)
 
         dispatch({
             type: GET_PROFILE,
@@ -133,7 +133,7 @@ export const addExperience = (FormData, history) => async dispatch => {
             }
         }
 
-        const res = await axios.put('api/profile/experience', FormData, config)
+        const res = await axios.put('https://social-app-b.herokuapp.com/api/profile/experience', FormData, config)
 
         dispatch({
             type: UPDATE_PROFILE,
@@ -164,7 +164,7 @@ export const addEducation = (FormData, history) => async dispatch => {
             }
         }
 
-        const res = await axios.put('api/profile/education', FormData, config)
+        const res = await axios.put('https://social-app-b.herokuapp.com/api/profile/education', FormData, config)
 
         dispatch({
             type: UPDATE_PROFILE,
@@ -190,7 +190,7 @@ export const addEducation = (FormData, history) => async dispatch => {
 // Delete Experience
 export const deleteExperience = id => async dispatch => {
     try {
-        const res = await axios.delete(`/api/profile/experience/${id}`)
+        const res = await axios.delete(`https://social-app-b.herokuapp.com/api/profile/experience/${id}`)
 
         dispatch({
             type: UPDATE_PROFILE,
@@ -211,7 +211,7 @@ export const deleteExperience = id => async dispatch => {
 // Delete Education
 export const deleteEducation = id => async dispatch => {
     try {
-        const res = await axios.delete(`/api/profile/education/${id}`)
+        const res = await axios.delete(`https://social-app-b.herokuapp.com/api/profile/education/${id}`)
 
         dispatch({
             type: UPDATE_PROFILE,
@@ -234,7 +234,7 @@ export const deleteAccount = () => async dispatch => {
 
 
         try {
-            await axios.delete('/api/profile')
+            await axios.delete('https://social-app-b.herokuapp.com/api/profile')
 
             dispatch({
                 type: CLEAR_PROFILE
